@@ -1,0 +1,22 @@
+services:
+  fishtool:
+    build: .
+    image: fishtool:latest
+    container_name: fishtool
+    ports:
+      - "8000:8000"
+    environment:
+      FISHTOOL_ALLOWED_HOSTS: "localhost,127.0.0.1"
+      TZ: Asia/Shanghai
+    volumes:
+      - fishtool-config:/app/config
+      - fishtool-data:/app/data
+      - fishtool-backups:/app/backups
+      - fishtool-reports:/app/reports
+    restart: unless-stopped
+
+volumes:
+  fishtool-config:
+  fishtool-data:
+  fishtool-backups:
+  fishtool-reports:

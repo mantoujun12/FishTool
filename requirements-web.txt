@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+# Keep the line above first: pip < 25.0 decodes requirements files with the locale
+# encoding (GBK on Chinese Windows) unless a coding line appears in the first two lines.
+# 网络请求
+aiohttp==3.9.1
+# 加密（配置 .secrets / Cookie 加密，Fernet）
+cryptography==41.0.7
+PyYAML==6.0.1
+# SQLAlchemy
+SQLAlchemy==2.0.23
+# Web框架
+fastapi==0.108.0
+# fastapi 0.108.0 要求 starlette>=0.29.0,<0.33.0；单独锁住，避免环境里残留的新版 starlette 被沿用
+starlette==0.32.0.post1
+# ASGI服务器（[standard] 含 websockets：web /ws 端点必需；Linux 下带 uvloop/httptools）
+uvicorn[standard]==0.25.0
+# 模板渲染（web/main.py Jinja2Templates 必需）
+jinja2==3.1.2
+# 网络请求（LLM OpenAI兼容调用）
+httpx==0.25.2
+# HTML解析
+beautifulsoup4==4.12.2
+# 二维码生成（纯 PNG，不需要 Pillow）
+qrcode==7.4.2
+# Markdown 渲染（自诊报告；惰性导入，缺失时降级纯文本）
+markdown2==2.4.12
+# 静态类型检查
+pydantic==2.5.2
+# pydantic 2.5.2 硬性要求 pydantic-core==2.14.5，二者必须同步改；版本不一致时 import pydantic 直接抛 SystemError
+pydantic-core==2.14.5

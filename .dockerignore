@@ -1,0 +1,46 @@
+# Docker 构建上下文排除清单：只保留 web 模式运行所需源码。
+# desktop/ 已确认不被 web 链路 import（依赖审计结论），可安全排除。
+.git
+.github
+.idea
+.venv
+venv
+.pytest_cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.db
+
+# 桌面版与无关目录
+desktop/
+integrations/
+tools/
+tests/
+docs/
+evidence/
+assets/
+交接文档/
+
+# 运行期产物：不进镜像，由 volume 持久化
+logs/
+data/
+backups/
+reports/
+
+# 本机密钥：不进镜像（首次启动自动重新生成）
+config/.key
+config/.secrets
+
+# 开发 / 打包辅助文件
+build/
+dist/
+build.spec
+start_web.bat
+conftest.py
+pytest.ini
+.gitattributes
+
+# Docker 自身
+Dockerfile
+docker-compose.yml
+.dockerignore
